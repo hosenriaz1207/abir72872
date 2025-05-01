@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eid Offer - 100GB Free MB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 30px;
+      text-align: center;
+    }
+    .banner {
+      background: green;
+      color: white;
+      padding: 25px;
+      font-size: 32px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .btn {
+      background: red;
+      color: white;
+      padding: 20px 60px;
+      font-size: 26px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+    .btn:hover {
+      background: darkred;
+      transform: scale(1.1);
+    }
+    .task {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .comments {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .comment {
+      background: #e8f4e5;
+      padding: 8px 10px;
+      border-radius: 5px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .time-ago {
+      font-size: 12px;
+      color: #888;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1DA851;
+      transform: scale(1.05);
+    }
+    .big-text {
+      font-size: 26px;
+      font-weight: bold;
+      color: green;
+      margin: 15px 0;
+    }
+    .comment-box {
+      margin-top: 20px;
+    }
+    .comment-box input,
+    .comment-box textarea {
+      width: 80%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .comment-box button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function randomTimeAgo() {
+      const sec = Math.floor(Math.random() * 180);
+      if (sec < 10) return "Just now";
+      if (sec < 60) return `${sec} seconds ago`;
+      const min = Math.floor(sec / 60);
+      return `${min} minute${min > 1 ? "s" : ""} ago`;
+    }
+
+    const randomNames = [
+      "Shahriar Rahman", "Nadia Islam", "Raihan Kabir", "Jannatul Mawa",
+      "Tariq Hasan", "Sadia Noor", "Fahim Alam", "Lubna Chowdhury",
+      "Asif Hossain", "Tahmid Rahman", "Rumi Akter", "Riaz Mahmud"
+    ];
+
+    const comments = [
+      "I just got the MB! Thanks a lot!", "MB ta really kaaj korse!",
+      "ভাই কাজ করছে, ধন্যবাদ!", "Didn't believe it at first, but it worked.",
+      "একটু সময় লাগে, কিন্তু পাওয়া যায়!", "Shared on WhatsApp, then MB active!",
+      "Thanks bro! 100GB already received.", "রেফার লিংক পাঠানোর পর ৫ মিনিটে পেলাম!",
+      "It actually works! Happy Eid everyone!", "Too good to be true but it is real!"
+    ];
+
+    const profilePics = [
+      "https://randomuser.me/api/portraits/men/32.jpg",
+      "https://randomuser.me/api/portraits/women/45.jpg",
+      "https://randomuser.me/api/portraits/men/76.jpg",
+      "https://randomuser.me/api/portraits/women/88.jpg",
+      "https://randomuser.me/api/portraits/men/12.jpg",
+      "https://randomuser.me/api/portraits/women/23.jpg",
+      "https://randomuser.me/api/portraits/men/44.jpg",
+      "https://randomuser.me/api/portraits/women/66.jpg",
+      "https://randomuser.me/api/portraits/men/58.jpg",
+      "https://randomuser.me/api/portraits/women/99.jpg"
+    ];
+
+    function loadRandomComments() {
+      let output = '';
+      for (let i = 0; i < 10; i++) {
+        const name = randomNames[Math.floor(Math.random() * randomNames.length)];
+        const text = comments[Math.floor(Math.random() * comments.length)];
+        const pic = profilePics[Math.floor(Math.random() * profilePics.length)];
+        const time = randomTimeAgo();
+        output += `
+          <div class="comment">
+            <img src="${pic}" alt="User" style="width:30px; height:30px; border-radius:50%; margin-right:10px;">
+            <strong>${name}:</strong> ${text}<br>
+            <span class="time-ago">${time}</span>
+          </div>`;
+      }
+      document.getElementById("commentsSection").innerHTML = output;
+    }
+
+    function showTasks() {
+      document.getElementById("tasks").style.display = "block";
+    }
+
+    function generateReferLink() {
+      const phoneNumber = document.getElementById("userNumber").value;
+      const referLink = `https://yourdomain.com/claim?ref=${phoneNumber}`; // Update with your domain
+      document.getElementById("referLink").value = referLink;
+    }
+
+    function shareWhatsApp() {
+      const referLink = document.getElementById("referLink").value;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("ঈদ উপলক্ষে ১০০GB MB ফ্রি নিচ্ছেন সবাই! আপনি ও নিন এখান থেকে: " + referLink)}`;
+      window.open(whatsappUrl, "_blank");
+    }
+
+    function finishTasks() {
+      alert("Tasks completed successfully! You will receive your 100GB soon!");
+    }
+
+    window.onload = loadRandomComments;
+  </script>
+</head>
+<body>
+  <div class="banner">Eid Mubarak! ঈদ উপলক্ষে ১০০ GB MB ফ্রি অফার!</div>
+  <p class="big-text">এই অফারটি শুধুমাত্র ঈদের রাত পর্যন্তই প্রযোজ্য!</p>
+  <p class="big-text">আপনি যতবার খুশি, ততবার অফারটি নিতে পারবেন।</p>
+  <button class="btn" onclick="showTasks()">Claim Now</button>
+
+  <div id="tasks" class="task">
+    <h3>Complete the following tasks to get your 100GB:</h3>
+    <p><strong>Task 1 (Wait 20s):</strong> Visit our sponsor link:
+      <a href="https://www.profitableratecpm.com/s4xkndwfg?key=f63a767b3d345d8e668d1a2d6b202dfc" target="_blank">Click Here</a>
+    </p>
+    <p><strong>Task 2 (Wait 20s):</strong> Visit again:
+      <a href="https://www.profitableratecpm.com/s4xkndwfg?key=f63a767b3d345d8e668d1a2d6b202dfc" target="_blank">Click Here</a>
+    </p>
+    <p><strong>Task 3:</strong> Enter your number to get refer link:</p>
+    <input type="text" id="userNumber" placeholder="e.g. 01XXXXXXXXX" oninput="generateReferLink()" />
+    <p>Your Refer Link:</p>
+    <input type="text" id="referLink" readonly value="Enter number above" />
+    <button class="btn" onclick="finishTasks()">Submit Task 3</button><br/><br/>
+
+    <p><strong>Task 4:</strong> Share this offer with at least <strong>10 friends</strong> via WhatsApp or Facebook:</p>
+    <button class="whatsapp-btn" onclick="shareWhatsApp()">Share on WhatsApp</button>
+    <p style="margin-top:10px;"><a href="https://www.facebook.com/sharer/sharer.php?u=https://eidfree100gb.com" target="_blank" style="color:blue; font-weight:bold;">Share on Facebook</a></p>
+    <p style="color: red; font-weight: bold;">You must share with at least 10 people to get your 100GB successfully.</p>
+  </div>
+
+  <div class="comments">
+    <h3>অনেকে ইতিমধ্যে ১০০GB MB পেয়েছে:</h3>
+    <div id="commentsSection"></div>
+    <div class="comment-box">
+      <input type="text" id="commentName" placeholder="Enter your name" />
+      <textarea id="commentText" placeholder="Write your comment"></textarea>
+      <button onclick="alert('Thanks for your comment!')">Post Comment</button>
+    </div>
+  </div>
+</body>
+</html>
